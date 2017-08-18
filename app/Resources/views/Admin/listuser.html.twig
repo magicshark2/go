@@ -33,15 +33,13 @@
 <script type="text/javascript" src="{{ asset('bundles/app/js/dataTables.bootstrap.min.js') }}"></script>
 <script>$(document).ready(function() {
     $('#example').DataTable();
-    //alert("ready");
+    
 } );
+function removeElement(id) {
+    alert(id);
+}
 </script>
 {% endblock %} 
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('bundles/app/css/dataTables.bootstrap.min.css') }}" >
-
-function removeElement(id) {
-    alert(id);
-}
-
 {% endblock %}

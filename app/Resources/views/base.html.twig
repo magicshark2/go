@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Welcome {% block title %}{% endblock %}!</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="{{ asset('bundles/app/bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" >
+
+
+   </head>
+    <body>
+        <div class="container-fluid">
+            {{ include('navbar.html.twig') }}
+            {% if error is defined %} 
+                {% if error %}
+                    <div class="alert alert-warning">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                {% endif %} 
+            {% endif %}
+            {% block body %}{% endblock %}
+        </div>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="{{ asset('bundles/app/bootstrap/bootstrap-3.3.7-dist/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/app/bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}" ></script>
+        {% block javascripts %}{% endblock %} 
+    </body>
+</html>

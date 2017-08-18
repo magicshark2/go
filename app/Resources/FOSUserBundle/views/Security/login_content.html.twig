@@ -1,0 +1,30 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{%block fos_user_content%}
+
+    <form action="{{ path("fos_user_security_check") }}" class="" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+        <div class="form-group form-group-sm">
+            <label class="col-sm-12 control-label required" for="username">{{ 'security.login.username'|trans }}</label>
+            <div class="col-sm-12">
+            <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" required="required" />
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-12 control-label required" for="password">{{ 'security.login.password'|trans }}</label>
+            <div class="col-sm-12">
+            <input type="password" id="password" name="_password" class="form-control" required="required" />
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label  class="col-sm-12"><input type="checkbox" id="remember_me" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans }}</label>
+        </div>
+        <div class="form-group form-group-sm">
+            <button id="_submit" class="btn-default btn col-sm-5 col-sm-offset-1 btn-xs" type="submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+            <a href="{{ path('fos_user_registration_register') }}">
+                <button type="button" class="btn-primary btn col-sm-5 btn-xs">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</button>
+            </a>
+        </div>
+    </form>
+{% endblock %}

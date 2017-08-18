@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste{% endblock %}
+{% block body %}
+    <div class="row">
+        <h1 class="text-center">Welcome to our new website</h1>
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+        {% for new in news %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ new.title }}</h3><a href="{{ path('default_delete',{'id': new.id}) }}">delete</a>
+                </div>
+                <div class="panel-body">
+                    <div class="row">{{new.description}}</div>
+                    <div class="row">{{new.content}}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {{ form(form) }}
+    </div> 
+{% endblock %}
